@@ -1,4 +1,27 @@
 {
   "name": "Aux-UI-Components",
-  "version": "0.0.1"
+  "description": "Some visual components for Auxionize.com project",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Auxionize/aux-ui-components",
+  "authors": [
+    "Branimir Simeonov <br.simeonov@gmail.com>",
+    "Kristian Tachev",
+    "Lucy Dimitrova"
+  ],
+  "main": "dist/aux-ui-components.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "keywords": [
+    "visual",
+    "component",
+    "components",
+    "ui-component",
+    "ui"
+  ],
+  "license": "MIT"
 }
