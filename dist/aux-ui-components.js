@@ -1,9 +1,7 @@
 /**
  * Name: aux-ui-components
  */
-
 angular.module('aux-ui-components', []);
-
 angular.module('aux-ui-components').component('accessType', {
 	bindings: {
 		value: '<'
