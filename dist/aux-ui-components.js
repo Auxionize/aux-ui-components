@@ -28,23 +28,32 @@ angular.module('aux-ui-components').component('offerType', {
 		'</span>'
 });
 
-angular.module('aux-ui-components').component('auxLabelState', {
-	bindings: {
-		state: '='
-	},
-	template: function ($element, $attrs) {
-		var icon = '';
-		switch ($attrs.state) {
-			case 'draft':       icon = 'fa-file';           break;
-			case 'active':      icon = 'fa-cogs';           break;
-			case 'won':         icon = 'fa-trophy';         break;
-			case 'finished':    icon = 'fa-flag-checkered'; break;
-			case 'rejected':    icon = 'fa-ban';            break;
-			default: icon = 'fa-file'; break;
-		}
-		return  '<span class="label label-default text-upper state ' + $attrs.state + '">' +
-					'<i class="fa ' + icon + '">&nbsp;</i>' +
-					'<span translate translate-context="purchase-state">' + $attrs.state + '</span>' +
+angular.module('aux-ui-components').directive('auxLabelState', function () {
+	return {
+		restrict: 'E',
+		scope: {
+			state: '<',
+			translatedState: '<'
+		},
+		controller: function ($scope) {
+			$scope.getIcon = function (state) {
+				var icon = '';
+				switch (state) {
+					case 'draft':       icon = 'fa-file';           break;
+					case 'active':      icon = 'fa-cogs';           break;
+					case 'won':         icon = 'fa-trophy';         break;
+					case 'finished':    icon = 'fa-flag-checkered'; break;
+					case 'rejected':    icon = 'fa-ban';            break;
+					default:            icon = 'fa-file';           break;
+				}
+				return icon;
+			};
+		},
+		template: function (element, attrs) {
+			return '<span class="label label-default text-upper state {{state}}">' +
+					'<i class="fa {{getIcon(state)}}">&nbsp;</i>' +
+					'<span>{{' + ((attrs.translatedState) ? 'translatedState' : 'state') + '}}</span>' +
 				'</span>';
-	},
+		}
+	}
 });
